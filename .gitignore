@@ -1,0 +1,13 @@
+.runtime/
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+*.sqlite
+*.sqlite3
+*.db
+*.log
+.venv/
+venv/
+.streamlit/secrets.toml
