@@ -1,0 +1,123 @@
+{
+  "summary": {
+    "questions": 4,
+    "hit_at_1": 0.75,
+    "hit_at_3": 1.0
+  },
+  "results": [
+    {
+      "question": "Что такое MLflow Tracking?",
+      "expected_pages": [
+        12
+      ],
+      "sources": [
+        {
+          "id": "page_012_chunk_002",
+          "page": 12,
+          "distance": 0.23275506496429443,
+          "text": "s) — это совокупность практик, направленных на автоматизацию и надежность жизненного цикла машинного обучения (развертывание, мониторинг, управление данными). Ключевая проблема, которую решает MLOps — обеспечение воспроизводимости, отслеживаемости и управляемости ML-экспериментов. MLflow — это open-source платформа для управления end-to-end жизненным циклом машинного обучения. Она включает в себя четыре основных компонента: MLflow Tracking: API и UI для логирования параметров, метрик, кода и артефактов (графики, модели) в процессе выполнения ML-кода. MLflow Projects: Стандартный формат упаковки ML-кода для обеспечения воспроизводимости на любой платформе. MLflow Models: Стандартный формат упаковки ML-моделей для упрощения их развертывания с помощью различных инструментов. MLflow Model Registry: Централизованное хранилище моделей для управления их жизненным циклом (staging, production, archiving). В данной работе focuses на компоненте Tracking. 2. Ключевые концепции MLflow Tracking"
+        },
+        {
+          "id": "page_012_chunk_003",
+          "page": 12,
+          "distance": 0.24022775888442993,
+          "text": "Registry: Централизованное хранилище моделей для управления их жизненным циклом (staging, production, archiving). В данной работе focuses на компоненте Tracking. 2. Ключевые концепции MLflow Tracking Эксперимент (Experiment): Контейнер для группы запусков (например, \"Оптимизация гиперпараметров для модели X\"). Запуск (Run): Одно выполнение кода, которое логируется в MLflow. Каждый запуск фиксирует: Параметры (Parameters): Входные переменные модели (например, max_depth, learning_rate). Метрики (Metrics): Количественные показатели качества модели (например, accuracy, rmse). Метрики могут обновляться по ходу выполнения (эпохам, итерациям). Артефакты (Artifacts): Файлы любого типа, связанные с запуском (например, графики, обученная модель, файл с предсказаниями)."
+        },
+        {
+          "id": "page_016_chunk_002",
+          "page": 16,
+          "distance": 0.25110340118408203,
+          "text": "точники) 1. Официальная документация MLflow: https://mlflow.org/docs/latest/index.html 2. Официальный туториал MLflow Tracking: https://mlflow.org/docs/latest/tracking.html 3. Scikit-learn User Guide: https://scikit-learn.org/stable/user_guide.html 4. Статья \"Getting Started with MLflow\": https://towardsdatascience.com/getting-started-with-mlflow- 52eff9c57d0d 5. Книга \"Machine Learning Engineering\" by Andriy Burkov: (Главы, касающиеся MLOps и воспроизводимости экспериментов) 6. MLflow: A Tool for Managing the Machine Learning Lifecycle: https://databricks.com/blog/2018/06/05/introducing-mlflow-an-open-source-machine-learning- platform.html 7. Документация по sklearn.metrics: https://scikit-learn.org/stable/modules/classes.html#module- sklearn.metrics 8. Matplotlib Documentation: https://matplotlib.org/stable/contents.html"
+        }
+      ],
+      "hit_at_1": true,
+      "hit_at_3": true
+    },
+    {
+      "question": "Как отслеживать эксперименты с MLflow?",
+      "expected_pages": [
+        12,
+        28
+      ],
+      "sources": [
+        {
+          "id": "page_012_chunk_001",
+          "page": 12,
+          "distance": 0.17940181493759155,
+          "text": "02_lab010202-Основы трекинга экспериментов с использованием MLflow.md 1 / 5 Лабораторная работа №1-2, Часть 2: Основы трекинга экспериментов с использованием MLflow Цель работы: Освоить базовые принципы работы с платформой MLflow для управления жизненным циклом машинного обучения (MLOps). Получить практические навыки логирования параметров, метрик и артефактов вычислительного эксперимента, а также организации их хранения, визуализации и сравнения. Стек технологий: Операционная система: Ubuntu 24.04 LTS Менеджер пакетов и окружений: Conda (окружение mlops-lab из Части 1) Библиотеки: mlflow, scikit-learn, pandas, matplotlib Платформа для трекинга: MLflow Tracking Server (standalone) Теоретическая часть (краткое содержание) 1. Введение в MLOps и MLflow MLOps (Machine Learning Operations) — это совокупность практик, направленных на автоматизацию и надежность жизненного цикла машинного обучения (развертывание, мониторинг, управление данными). Ключевая проблема, которую решает MLOps —"
+        },
+        {
+          "id": "page_028_chunk_001",
+          "page": 28,
+          "distance": 0.23564201593399048,
+          "text": "03_lab030403-Интеграция с MLflow для трекинга экспериментов.md 1 / 7 Лабораторная работа №3-4, Часть 3: Интеграция с MLflow для трекинга экспериментов Цель работы: Освоить интеграцию процесса тонкой настройки моделей с платформой MLflow для комплексного трекинга экспериментов. Научиться автоматически логировать гиперпараметры, метрики, артефакты и модели в ходе обучения. Стек технологий: ОС: Ubuntu 24.04 LTS Окружение: Conda (mlops-lab) Библиотеки: mlflow, transformers, datasets, torch Платформа: MLflow Tracking Server Интеграция: MLflow + Hugging Face Transformers Теоретическая часть 1. Интеграция MLflow с Transformers MLflow предоставляет нативные интеграции с популярными ML- фреймворками, включая Hugging Face Transformers. Ключевые возможности: Автоматическое логирование: Автологирование параметров, метрик и артефактов Модельный регистр: Версионирование и управление моделями Воспроизводимость: Фиксация всех компонентов эксперимента 2. Компоненты трекинга для NLP Параметры: learning"
+        },
+        {
+          "id": "page_033_chunk_001",
+          "page": 33,
+          "distance": 0.24592459201812744,
+          "text": "03_lab030403-Интеграция с MLflow для трекинга экспериментов.md 6 / 7 2. Код для анализа экспериментов: import mlflow from mlflow.tracking import MlflowClient client = MlflowClient() # Получение всех запусков эксперимента experiment = client.get_experiment_by_name(\"Emotion-Classification- FineTuning\") runs = client.search_runs(experiment.experiment_id) print(\"Результаты экспериментов:\") for run in runs: print(f\"Run ID: {run.info.run_id}\") print(f\"Parameters: {run.data.params}\") print(f\"Metrics: {run.data.metrics}\") print(\"-\" * 50) # Нахождение лучшего запуска best_run = min(runs, key=lambda x: x.data.metrics.get('eval_loss', float('inf'))) print(f\"Лучший запуск: {best_run.info.run_id}\") print(f\"Лучшие метрики: {best_run.data.metrics}\") Требования к оформлению и отчету Критерии оценки для Части 3: Удовлетворительно: Успешно выполнены Этапы 1-2 (настройка MLflow, модификация скрипта). Эксперимент запускается и базовые параметры записываются в MLflow. Хорошо: Дополнительно успешно"
+        }
+      ],
+      "hit_at_1": true,
+      "hit_at_3": true
+    },
+    {
+      "question": "Как выполнить семантический поиск с помощью ChromaDB?",
+      "expected_pages": [
+        35,
+        38
+      ],
+      "sources": [
+        {
+          "id": "page_035_chunk_002",
+          "page": 35,
+          "distance": 0.3495595455169678,
+          "text": "ерными векторами Семантический поиск: Поиск по смыслу, а не точному совпадению Ближайшие соседи: Эффективный поиск похожих объектов 2. ChromaDB Open-source векторная БД с простым API: Локальный режим: Работа в памяти или с персистентным хранилищем Клиент-сервер: Разделение на клиент и сервер Python-first: Простая интеграция с Python-экосистемой 3. Применение в NLP Поиск похожих документов Векторизация текстовых данных Основа для RAG-систем Задание на практическую реализацию Этап 1: Установка и настройка окружения 1. Активация окружения и установка пакетов: conda activate mlops-lab pip install chromadb sentence-transformers pandas numpy"
+        },
+        {
+          "id": "page_041_chunk_001",
+          "page": 41,
+          "distance": 0.37887150049209595,
+          "text": "04_lab050601-Работа с векторными базами данных (ChromaDB).md 7 / 7 Хорошо: Дополнительно успешно выполнен Этап 5 (реализован семантический поиск, протестированы запросы). Получены осмысленные результаты поиска. Отлично: Все задания выполнены в полном объеме. Реализованы расширенные функции (Этапы 6-8): фильтрация, персистентное хранение, работа с разными типами данных. Проанализирована эффективность поиска. Рекомендуемая литература 1. ChromaDB Documentation: https://docs.trychroma.com/ 2. Sentence Transformers Documentation: https://www.sbert.net/ 3. Vector Databases Overview: https://www.pinecone.io/learn/vector-database/ 4. Semantic Search Techniques: https://www.sbert.net/examples/applications/semantic- search/README.html 5. Similarity Search Algorithms: https://en.wikipedia.org/wiki/Nearest_neighbor_search"
+        },
+        {
+          "id": "page_038_chunk_001",
+          "page": 38,
+          "distance": 0.3995441198348999,
+          "text": "04_lab050601-Работа с векторными базами данных (ChromaDB).md 4 / 7 include=[\"documents\", \"distances\", \"metadatas\"] ) return results # Тестовые запросы test_queries = [ \"искусственный интеллект\", \"нейронные сети\", \"обработка текста\", \"базы данных\" ] print(\"\\nРезультаты семантического поиска:\") for query in test_queries: print(f\"\\nЗапрос: '{query}'\") results = semantic_search(query) for i, (doc, distance) in enumerate(zip(results['documents'][0], results['distances'][0])): print(f\"{i+1}. {doc} (расстояние: {distance:.4f})\") Этап 6: Расширенная функциональность 1. Работа с метаданными и фильтрация: def filtered_search(query: str, filter_dict: Dict, n_results: int = 2): query_embedding = model.encode([query]).tolist() results = collection.query( query_embeddings=query_embedding, n_results=n_results, where=filter_dict, include=[\"documents\", \"distances\", \"metadatas\"] ) return results # Поиск с фильтрацией print(\"\\n\\nПоиск с фильтрацией по категории:\") results = filtered_search( \"модели"
+        }
+      ],
+      "hit_at_1": true,
+      "hit_at_3": true
+    },
+    {
+      "question": "Как запустить приложение FastAPI в Docker?",
+      "expected_pages": [
+        85
+      ],
+      "sources": [
+        {
+          "id": "page_007_chunk_003",
+          "page": 7,
+          "distance": 0.4344373345375061,
+          "text": "еские утилиты. Miniconda — его минималистичная версия, содержащая только conda, Python и небольшой набор базовых пакетов. 2. Введение в Docker Docker — это платформа для разработки, доставки и запуска приложений в контейнерах. Контейнер — это стандартизированная единица программного обеспечения, которая инкапсулирует код и все его зависимости, обеспечивая быстрое и надежное выполнение приложения в любой среде (ноутбук, сервер, облако). Ключевые преимущества: Изоляция: Приложение в контейнере не зависит от окружения хостовой системы. Переносимость: Образ, собранный на одной машине, гарантированно запустится на другой. Повторяемость: Исключается проблема \"но на моей машине это работало\". Масштабируемость: Легко запустить несколько экземпляров приложения. Базовые концепции: Docker Image: Шаблон только для чтения, используемый для создания контейнеров. Собирается из Dockerfile. Docker Container: Запущенный экземпляр образа. Docker Hub: Публичный реестр для хранения и обмена образами."
+        },
+        {
+          "id": "page_072_chunk_001",
+          "page": 72,
+          "distance": 0.4381459355354309,
+          "text": "07_lab091001-Развертывание ML-моделей с FastAPI.md 1 / 11 Лабораторная работа №9-10, Часть 1: Развертывание ML-моделей с FastAPI Цель работы: Освоить создание production-ready веб-сервисов для обслуживания ML-моделей с использованием FastAPI. Получить практические навыки разработки RESTful API, валидации данных и документирования эндпоинтов. Стек технологий: ОС: Ubuntu 24.04 LTS Окружение: Conda (mlops-lab) Фреймворк: FastAPI, Uvicorn Библиотеки: pydantic, scikit-learn, transformers, numpy Модель: Классификатор эмоций (из предыдущих работ) Документация: Swagger/OpenAPI Теоретическая часть 1. FastAPI для ML-сервисов FastAPI — современный фреймворк для создания API на Python: Высокая производительность: На основе Starlette и Pydantic Автодокументирование: Генерация OpenAPI-спецификации Валидация данных: Использование Pydantic моделей Асинхронность: Поддержка async/await 2. Архитектура ML-сервиса Загрузка модели: Инициализация при запуске приложения Предобработка: Валидация и"
+        },
+        {
+          "id": "page_085_chunk_001",
+          "page": 85,
+          "distance": 0.4660274386405945,
+          "text": "07_lab091002-Контейнеризация ML-сервиса с Docker.md 3 / 7 USER user # Сообщаем Docker, что контейнер слушает на порту 8000 EXPOSE 8000 # Команда для запуска приложения с Uvicorn CMD [\"uvicorn\", \"main:app\", \"--host\", \"0.0.0.0\", \"--port\", \"8000\"] Этап 3: Создание .dockerignore 1. Создание .dockerignore: Создайте файл .dockerignore, чтобы исключить из образа ненужные файлы (кеш Python, виртуальные окружения, файлы IDE), что уменьшит размер образа и ускорит сборку. # .dockerignore __pycache__ *.pyc *.pyo *.pyd .Python env/ venv/ .venv .vscode .idea *.log .git .dockerignore Dockerfile README.md Этап 4: Сборка Docker-образа 1. Сборка образа: Откройте терминал в корневой директории проекта (emotion-api). Выполните команду для сборки образа. Флаг -t задает имя и тег образа. docker build -t emotion-classifier-api:1.0 . 2. Проверка собранного образа: Убедитесь, что образ появился в списке локальных образов. docker images"
+        }
+      ],
+      "hit_at_1": false,
+      "hit_at_3": true
+    }
+  ]
+}

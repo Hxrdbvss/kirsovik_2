@@ -1,0 +1,32 @@
+{
+  "verified_at": "2026-11-09T10:54:08.405Z",
+  "groups": 2,
+  "students": 30,
+  "disciplines": 10,
+  "disciplines_per_group": [
+    {
+      "group": "ИВТ-21",
+      "count": 8
+    },
+    {
+      "group": "ПИ-21",
+      "count": 8
+    }
+  ],
+  "checks": {
+    "learner_desktop": true,
+    "curriculum_course_switch": true,
+    "python_five_questions": true,
+    "admin_initially_protected": true,
+    "admin_login": true,
+    "group_filter_15": true,
+    "name_search_1": true,
+    "filtered_csv_header_plus_one_row": true,
+    "profile_edit_and_restore": true,
+    "student_card_eight_courses": true,
+    "group_plans_visible": true,
+    "admin_logout": true,
+    "mobile_390_no_page_overflow": true
+  },
+  "screenshots": 7
+}

@@ -1,0 +1,173 @@
+[
+  {
+    "question": "Что такое MLflow Tracking?",
+    "generated_answer": "MLflow Tracking - это open-source платформа для логирования параметров, метрик, кода и артефактов при выполнении ML-кода. Она включает в себя три основных компонента: MLflow Tracking API и UI для логирования, MLflow Projects для обеспечения воспроизводимости на разных платформах, и MLflow Model Registry для управления жизненным циклом моделей.",
+    "sources": [
+      {
+        "id": "page_012_chunk_002",
+        "text": "s) — это совокупность практик, направленных на автоматизацию и надежность жизненного цикла машинного обучения (развертывание, мониторинг, управление данными). Ключевая проблема, которую решает MLOps — обеспечение воспроизводимости, отслеживаемости и управляемости ML-экспериментов. MLflow — это open-source платформа для управления end-to-end жизненным циклом машинного обучения. Она включает в себя четыре основных компонента: MLflow Tracking: API и UI для логирования параметров, метрик, кода и артефактов (графики, модели) в процессе выполнения ML-кода. MLflow Projects: Стандартный формат упаковки ML-кода для обеспечения воспроизводимости на любой платформе. MLflow Models: Стандартный формат упаковки ML-моделей для упрощения их развертывания с помощью различных инструментов. MLflow Model Registry: Централизованное хранилище моделей для управления их жизненным циклом (staging, production, archiving). В данной работе focuses на компоненте Tracking. 2. Ключевые концепции MLflow Tracking",
+        "source": "lab_manual.pdf",
+        "page": 12,
+        "distance": 0.23275506496429443
+      },
+      {
+        "id": "page_012_chunk_003",
+        "text": "Registry: Централизованное хранилище моделей для управления их жизненным циклом (staging, production, archiving). В данной работе focuses на компоненте Tracking. 2. Ключевые концепции MLflow Tracking Эксперимент (Experiment): Контейнер для группы запусков (например, \"Оптимизация гиперпараметров для модели X\"). Запуск (Run): Одно выполнение кода, которое логируется в MLflow. Каждый запуск фиксирует: Параметры (Parameters): Входные переменные модели (например, max_depth, learning_rate). Метрики (Metrics): Количественные показатели качества модели (например, accuracy, rmse). Метрики могут обновляться по ходу выполнения (эпохам, итерациям). Артефакты (Artifacts): Файлы любого типа, связанные с запуском (например, графики, обученная модель, файл с предсказаниями).",
+        "source": "lab_manual.pdf",
+        "page": 12,
+        "distance": 0.24022775888442993
+      },
+      {
+        "id": "page_016_chunk_002",
+        "text": "точники) 1. Официальная документация MLflow: https://mlflow.org/docs/latest/index.html 2. Официальный туториал MLflow Tracking: https://mlflow.org/docs/latest/tracking.html 3. Scikit-learn User Guide: https://scikit-learn.org/stable/user_guide.html 4. Статья \"Getting Started with MLflow\": https://towardsdatascience.com/getting-started-with-mlflow- 52eff9c57d0d 5. Книга \"Machine Learning Engineering\" by Andriy Burkov: (Главы, касающиеся MLOps и воспроизводимости экспериментов) 6. MLflow: A Tool for Managing the Machine Learning Lifecycle: https://databricks.com/blog/2018/06/05/introducing-mlflow-an-open-source-machine-learning- platform.html 7. Документация по sklearn.metrics: https://scikit-learn.org/stable/modules/classes.html#module- sklearn.metrics 8. Matplotlib Documentation: https://matplotlib.org/stable/contents.html",
+        "source": "lab_manual.pdf",
+        "page": 16,
+        "distance": 0.25110340118408203
+      }
+    ],
+    "matching_sentences": [
+      {
+        "page": 12,
+        "text": "Она включает в себя четыре основных компонента: MLflow Tracking: API и UI для логирования параметров, метрик, кода и артефактов (графики, модели) в процессе выполнения ML-кода."
+      },
+      {
+        "page": 12,
+        "text": "Ключевые концепции MLflow Tracking"
+      },
+      {
+        "page": 12,
+        "text": "Ключевые концепции MLflow Tracking Эксперимент (Experiment): Контейнер для группы запусков (например, \"Оптимизация гиперпараметров для модели X\")."
+      },
+      {
+        "page": 16,
+        "text": "Официальный туториал MLflow Tracking: https://mlflow.org/docs/latest/tracking.html 3."
+      }
+    ]
+  },
+  {
+    "question": "Как отслеживать эксперименты машинного обучения с помощью MLflow?",
+    "generated_answer": "MLflow позволяет отслеживать эксперименты машинного обучения через его компоненты Tracking. Это включает в себя логирование параметров, метрик, кода и артефактов (графиков, моделей) при выполнении ML-кода. MLflow также обеспечивает воспроизводимость, отслеживаемость и управляемость ML-экспериментов благодаря ключевым функциям, таких как автоматическое логирование гиперпараметров, метрик, артефактов и моделей. MLflow Model Registry также используется для управления жизненным циклом моделей.",
+    "sources": [
+      {
+        "id": "page_012_chunk_001",
+        "text": "02_lab010202-Основы трекинга экспериментов с использованием MLflow.md 1 / 5 Лабораторная работа №1-2, Часть 2: Основы трекинга экспериментов с использованием MLflow Цель работы: Освоить базовые принципы работы с платформой MLflow для управления жизненным циклом машинного обучения (MLOps). Получить практические навыки логирования параметров, метрик и артефактов вычислительного эксперимента, а также организации их хранения, визуализации и сравнения. Стек технологий: Операционная система: Ubuntu 24.04 LTS Менеджер пакетов и окружений: Conda (окружение mlops-lab из Части 1) Библиотеки: mlflow, scikit-learn, pandas, matplotlib Платформа для трекинга: MLflow Tracking Server (standalone) Теоретическая часть (краткое содержание) 1. Введение в MLOps и MLflow MLOps (Machine Learning Operations) — это совокупность практик, направленных на автоматизацию и надежность жизненного цикла машинного обучения (развертывание, мониторинг, управление данными). Ключевая проблема, которую решает MLOps —",
+        "source": "lab_manual.pdf",
+        "page": 12,
+        "distance": 0.19528412818908691
+      },
+      {
+        "id": "page_012_chunk_002",
+        "text": "s) — это совокупность практик, направленных на автоматизацию и надежность жизненного цикла машинного обучения (развертывание, мониторинг, управление данными). Ключевая проблема, которую решает MLOps — обеспечение воспроизводимости, отслеживаемости и управляемости ML-экспериментов. MLflow — это open-source платформа для управления end-to-end жизненным циклом машинного обучения. Она включает в себя четыре основных компонента: MLflow Tracking: API и UI для логирования параметров, метрик, кода и артефактов (графики, модели) в процессе выполнения ML-кода. MLflow Projects: Стандартный формат упаковки ML-кода для обеспечения воспроизводимости на любой платформе. MLflow Models: Стандартный формат упаковки ML-моделей для упрощения их развертывания с помощью различных инструментов. MLflow Model Registry: Централизованное хранилище моделей для управления их жизненным циклом (staging, production, archiving). В данной работе focuses на компоненте Tracking. 2. Ключевые концепции MLflow Tracking",
+        "source": "lab_manual.pdf",
+        "page": 12,
+        "distance": 0.2673656940460205
+      },
+      {
+        "id": "page_028_chunk_001",
+        "text": "03_lab030403-Интеграция с MLflow для трекинга экспериментов.md 1 / 7 Лабораторная работа №3-4, Часть 3: Интеграция с MLflow для трекинга экспериментов Цель работы: Освоить интеграцию процесса тонкой настройки моделей с платформой MLflow для комплексного трекинга экспериментов. Научиться автоматически логировать гиперпараметры, метрики, артефакты и модели в ходе обучения. Стек технологий: ОС: Ubuntu 24.04 LTS Окружение: Conda (mlops-lab) Библиотеки: mlflow, transformers, datasets, torch Платформа: MLflow Tracking Server Интеграция: MLflow + Hugging Face Transformers Теоретическая часть 1. Интеграция MLflow с Transformers MLflow предоставляет нативные интеграции с популярными ML- фреймворками, включая Hugging Face Transformers. Ключевые возможности: Автоматическое логирование: Автологирование параметров, метрик и артефактов Модельный регистр: Версионирование и управление моделями Воспроизводимость: Фиксация всех компонентов эксперимента 2. Компоненты трекинга для NLP Параметры: learning",
+        "source": "lab_manual.pdf",
+        "page": 28,
+        "distance": 0.27285122871398926
+      }
+    ],
+    "matching_sentences": [
+      {
+        "page": 12,
+        "text": "Получить практические навыки логирования параметров, метрик и артефактов вычислительного эксперимента, а также организации их хранения, визуализации и сравнения."
+      },
+      {
+        "page": 12,
+        "text": "Она включает в себя четыре основных компонента: MLflow Tracking: API и UI для логирования параметров, метрик, кода и артефактов (графики, модели) в процессе выполнения ML-кода."
+      },
+      {
+        "page": 28,
+        "text": "Научиться автоматически логировать гиперпараметры, метрики, артефакты и модели в ходе обучения."
+      },
+      {
+        "page": 28,
+        "text": "Ключевые возможности: Автоматическое логирование: Автологирование параметров, метрик и артефактов Модельный регистр: Версионирование и управление моделями Воспроизводимость: Фиксация всех компонентов эксперимента 2."
+      },
+      {
+        "page": 28,
+        "text": "Компоненты трекинга для NLP Параметры: learning"
+      }
+    ]
+  },
+  {
+    "question": "Как выполнить семантический поиск с помощью ChromaDB?",
+    "generated_answer": "Семантический поиск с ChromaDB можно выполнить следующим образом:\n\n1. **Установите необходимые пакеты**:\n   ```bash\n   conda activate mlops-lab\n   pip install chromadb sentence-transformers pandas numpy\n   ```\n\n2. **Настройте окружение**:\n   - Активируйте окружение.\n   - Установите ChromaDB.\n\n3. **Инициализируйте коллекцию**:\n   ```python\n   from chromadb import Collection\n   collection = Collection(\"my_collection\")\n   ```\n\n4. **Обучите модели для преобразования текстов в векторы**:\n   ```python\n   from sentence_transformers import SentenceTransformer",
+    "sources": [
+      {
+        "id": "page_035_chunk_002",
+        "text": "ерными векторами Семантический поиск: Поиск по смыслу, а не точному совпадению Ближайшие соседи: Эффективный поиск похожих объектов 2. ChromaDB Open-source векторная БД с простым API: Локальный режим: Работа в памяти или с персистентным хранилищем Клиент-сервер: Разделение на клиент и сервер Python-first: Простая интеграция с Python-экосистемой 3. Применение в NLP Поиск похожих документов Векторизация текстовых данных Основа для RAG-систем Задание на практическую реализацию Этап 1: Установка и настройка окружения 1. Активация окружения и установка пакетов: conda activate mlops-lab pip install chromadb sentence-transformers pandas numpy",
+        "source": "lab_manual.pdf",
+        "page": 35,
+        "distance": 0.3495595455169678
+      },
+      {
+        "id": "page_041_chunk_001",
+        "text": "04_lab050601-Работа с векторными базами данных (ChromaDB).md 7 / 7 Хорошо: Дополнительно успешно выполнен Этап 5 (реализован семантический поиск, протестированы запросы). Получены осмысленные результаты поиска. Отлично: Все задания выполнены в полном объеме. Реализованы расширенные функции (Этапы 6-8): фильтрация, персистентное хранение, работа с разными типами данных. Проанализирована эффективность поиска. Рекомендуемая литература 1. ChromaDB Documentation: https://docs.trychroma.com/ 2. Sentence Transformers Documentation: https://www.sbert.net/ 3. Vector Databases Overview: https://www.pinecone.io/learn/vector-database/ 4. Semantic Search Techniques: https://www.sbert.net/examples/applications/semantic- search/README.html 5. Similarity Search Algorithms: https://en.wikipedia.org/wiki/Nearest_neighbor_search",
+        "source": "lab_manual.pdf",
+        "page": 41,
+        "distance": 0.37887150049209595
+      },
+      {
+        "id": "page_038_chunk_001",
+        "text": "04_lab050601-Работа с векторными базами данных (ChromaDB).md 4 / 7 include=[\"documents\", \"distances\", \"metadatas\"] ) return results # Тестовые запросы test_queries = [ \"искусственный интеллект\", \"нейронные сети\", \"обработка текста\", \"базы данных\" ] print(\"\\nРезультаты семантического поиска:\") for query in test_queries: print(f\"\\nЗапрос: '{query}'\") results = semantic_search(query) for i, (doc, distance) in enumerate(zip(results['documents'][0], results['distances'][0])): print(f\"{i+1}. {doc} (расстояние: {distance:.4f})\") Этап 6: Расширенная функциональность 1. Работа с метаданными и фильтрация: def filtered_search(query: str, filter_dict: Dict, n_results: int = 2): query_embedding = model.encode([query]).tolist() results = collection.query( query_embeddings=query_embedding, n_results=n_results, where=filter_dict, include=[\"documents\", \"distances\", \"metadatas\"] ) return results # Поиск с фильтрацией print(\"\\n\\nПоиск с фильтрацией по категории:\") results = filtered_search( \"модели",
+        "source": "lab_manual.pdf",
+        "page": 38,
+        "distance": 0.3995441198348999
+      }
+    ],
+    "matching_sentences": [
+      {
+        "page": 35,
+        "text": "ерными векторами Семантический поиск: Поиск по смыслу, а не точному совпадению Ближайшие соседи: Эффективный поиск похожих объектов 2."
+      },
+      {
+        "page": 35,
+        "text": "Применение в NLP Поиск похожих документов Векторизация текстовых данных Основа для RAG-систем Задание на практическую реализацию Этап 1: Установка и настройка окружения 1."
+      },
+      {
+        "page": 41,
+        "text": "04_lab050601-Работа с векторными базами данных (ChromaDB).md 7 / 7 Хорошо: Дополнительно успешно выполнен Этап 5 (реализован семантический поиск, протестированы запросы)."
+      },
+      {
+        "page": 41,
+        "text": "Получены осмысленные результаты поиска."
+      },
+      {
+        "page": 41,
+        "text": "Проанализирована эффективность поиска."
+      }
+    ]
+  },
+  {
+    "question": "Сколько стоит обучение на этом курсе?",
+    "generated_answer": "Недостаточно данных для ответа.",
+    "sources": [
+      {
+        "id": "page_133_chunk_001",
+        "text": "08_lab111204-Оценка качества работы системы.md 3 / 15 ground_truth_answer=\"Основные типы машинного обучения: обучение с учителем (supervised learning), обучение без учителя (unsupervised learning) и обучение с подкреплением (reinforcement learning).\", relevant_document_ids=[\"doc_001\"], category=\"AI\", difficulty=\"easy\" ) ] class EvaluationDataset: def __init__(self, test_cases: List[TestCase] = None): self.test_cases = test_cases or EVALUATION_DATASET def get_cases_by_category(self, category: str) -> List[TestCase]: return [case for case in self.test_cases if case.category == category] def get_cases_by_difficulty(self, difficulty: str) -> List[TestCase]: return [case for case in self.test_cases if case.difficulty == difficulty] def get_statistics(self) -> Dict[str, Any]: stats = { \"total_cases\": len(self.test_cases), \"by_category\": {}, \"by_difficulty\": {} } for case in self.test_cases: stats[\"by_category\"][case.category] = stats[\"by_category\"].get(case.category, 0) + 1",
+        "source": "lab_manual.pdf",
+        "page": 133,
+        "distance": 0.6291230916976929
+      },
+      {
+        "id": "page_146_chunk_001",
+        "text": "09_lab131800-Сквозной проект.md 1 / 9 Лабораторная работа №13-18: Сквозной проект Разработка прототипа системы управления знаниями Цель работы: Разработать полнофункциональный прототип интеллектуальной системы управления знаниями, интегрирующий технологии MLOps, векторные и графовые базы данных, семантические технологии и современные языковые модели. Объем работы: 6 недель (36 часов лабораторных работ + 36 часов самостоятельной работы) Часть 1: Примерные темы проектов Интеллектуальные системы для образования 1. Умный поиск по академическим материалам - RAG-система для научных статей и учебных материалов 2. Персональный образовательный ассистент - адаптивная система рекомендаций контента 3. Система проверки академических работ - анализ оригинальности и качества студенческих работ 4. Интеллектуальный тьютор по программированию - код-ревью и рекомендации по улучшению Бизнес-аналитика и управление 5. Анализ отзывов клиентов - классификация и извлечение инсайтов из пользовательских отзывов",
+        "source": "lab_manual.pdf",
+        "page": 146,
+        "distance": 0.6900853514671326
+      },
+      {
+        "id": "page_032_chunk_002",
+        "text": "mlflow.start_run(nested=True): mlflow.log_param(\"learning_rate\", lr) results = train_model(learning_rate=lr) mlflow.log_metrics(results) print(\"Эксперимент по подбору learning rate завершен!\") Этап 5: Анализ результатов 1. Создание скрипта для анализа: touch analyze_results.py",
+        "source": "lab_manual.pdf",
+        "page": 32,
+        "distance": 0.709108829498291
+      }
+    ],
+    "matching_sentences": []
+  }
+]

@@ -1,0 +1,357 @@
+{
+  "verified_at": "2026-11-09T14:01:09.576699+00:00",
+  "lessons": 22,
+  "body_words": 8628,
+  "checks": [
+    {
+      "name": "All 22 lessons are available through the runtime catalog",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "The library covers ten disciplines",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "mat_01: published text matches the editable original",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "mat_01: downloaded notes contain assignment, solution and links",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "mat_02: published text matches the editable original",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "mat_02: downloaded notes contain assignment, solution and links",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "mat_02: executable Python example has the documented output",
+      "passed": true,
+      "details": {
+        "returncode": 0,
+        "stdout": "повторить основы\nвыполнить практику\nперейти дальше\n"
+      }
+    },
+    {
+      "name": "mat_03: published text matches the editable original",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "mat_03: downloaded notes contain assignment, solution and links",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "mat_03: executable Python example has the documented output",
+      "passed": true,
+      "details": {
+        "returncode": 0,
+        "stdout": "А\n12.0\n"
+      }
+    },
+    {
+      "name": "mat_04: published text matches the editable original",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "mat_04: downloaded notes contain assignment, solution and links",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "mat_04: executable Python example has the documented output",
+      "passed": true,
+      "details": {
+        "returncode": 0,
+        "stdout": "[5, 7, 11]\n1.0\n"
+      }
+    },
+    {
+      "name": "python_01: published text matches the editable original",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "python_01: downloaded notes contain assignment, solution and links",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "python_01: executable Python example has the documented output",
+      "passed": true,
+      "details": {
+        "returncode": 0,
+        "stdout": "Анна 80.0\nпорог достигнут\n"
+      }
+    },
+    {
+      "name": "python_02: published text matches the editable original",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "python_02: downloaded notes contain assignment, solution and links",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "python_02: executable Python example has the documented output",
+      "passed": true,
+      "details": {
+        "returncode": 0,
+        "stdout": "73.33\nNone\n"
+      }
+    },
+    {
+      "name": "databases_01: published text matches the editable original",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "databases_01: downloaded notes contain assignment, solution and links",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "databases_02: published text matches the editable original",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "databases_02: downloaded notes contain assignment, solution and links",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "web_01: published text matches the editable original",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "web_01: downloaded notes contain assignment, solution and links",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "web_02: published text matches the editable original",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "web_02: downloaded notes contain assignment, solution and links",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "algorithms_01: published text matches the editable original",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "algorithms_01: downloaded notes contain assignment, solution and links",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "algorithms_01: executable Python example has the documented output",
+      "passed": true,
+      "details": {
+        "returncode": 0,
+        "stdout": "3\n-1\n"
+      }
+    },
+    {
+      "name": "algorithms_02: published text matches the editable original",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "algorithms_02: downloaded notes contain assignment, solution and links",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "algorithms_02: executable Python example has the documented output",
+      "passed": true,
+      "details": {
+        "returncode": 0,
+        "stdout": "изменить заголовок\nАнна\nВеб-технологии\n"
+      }
+    },
+    {
+      "name": "statistics_01: published text matches the editable original",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "statistics_01: downloaded notes contain assignment, solution and links",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "statistics_01: executable Python example has the documented output",
+      "passed": true,
+      "details": {
+        "returncode": 0,
+        "stdout": "6\n3\n[3]\n2.67\n"
+      }
+    },
+    {
+      "name": "statistics_02: published text matches the editable original",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "statistics_02: downloaded notes contain assignment, solution and links",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "statistics_02: executable Python example has the documented output",
+      "passed": true,
+      "details": {
+        "returncode": 0,
+        "stdout": "4\n0.25\n"
+      }
+    },
+    {
+      "name": "software_01: published text matches the editable original",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "software_01: downloaded notes contain assignment, solution and links",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "software_02: published text matches the editable original",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "software_02: downloaded notes contain assignment, solution and links",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "software_02: executable Python example has the documented output",
+      "passed": true,
+      "details": {
+        "returncode": 0,
+        "stdout": ""
+      }
+    },
+    {
+      "name": "security_01: published text matches the editable original",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "security_01: downloaded notes contain assignment, solution and links",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "security_02: published text matches the editable original",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "security_02: downloaded notes contain assignment, solution and links",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "networks_01: published text matches the editable original",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "networks_01: downloaded notes contain assignment, solution and links",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "networks_02: published text matches the editable original",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "networks_02: downloaded notes contain assignment, solution and links",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "os_01: published text matches the editable original",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "os_01: downloaded notes contain assignment, solution and links",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "os_02: published text matches the editable original",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "os_02: downloaded notes contain assignment, solution and links",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "os_02: executable Python example has the documented output",
+      "passed": true,
+      "details": {
+        "returncode": 0,
+        "stdout": "report.json\n80\n"
+      }
+    },
+    {
+      "name": "SQL schema and selection example return the documented student",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "SQL foreign key demonstration rejects an unknown group",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "SQL grouping keeps a zero-student group",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "SQL filter returns the documented students",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "quizzes.json: all question IDs, choices, keys and explanations match the baseline",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "additional_quizzes.json: all question IDs, choices, keys and explanations match the baseline",
+      "passed": true,
+      "details": null
+    }
+  ],
+  "passed": 63,
+  "total": 63
+}

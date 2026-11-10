@@ -1,0 +1,6 @@
+Проверено 10 ноября 2026 года.
+Команда: python -m unittest test_learning_flow test_portal_exports test_academy test_adaptive_engine -v
+10 + 3 + 7 + 13 = 33 теста пройдено.
+Ran 33 tests in 10.404s
+OK
+Рабочая база не очищалась; тесты используют временные SQLite.

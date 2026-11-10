@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-09",
+  "desktop": {
+    "width": 1500,
+    "height": 1100,
+    "tabs": 4,
+    "courseCards": 4
+  },
+  "mobile": {
+    "viewport": 390,
+    "documentWidth": 390,
+    "mainWidth": 390,
+    "mainScroll": 390
+  },
+  "csv": {
+    "rowsIncludingHeader": 5,
+    "attempts": 4
+  },
+  "json": {
+    "points": 30,
+    "attempts": 4
+  },
+  "profileAfterReload": "design_saved_check",
+  "risk": 0.5876
+}

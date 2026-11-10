@@ -1,0 +1,32 @@
+[
+  {
+    "student": "adaptive_demo_a",
+    "created": true,
+    "url": "http://localhost:8501/?student=adaptive_demo_a&discipline=machine_learning",
+    "mode": "practice",
+    "focus": [
+      "Обучение с учителем",
+      "Классификация и регрессия"
+    ],
+    "reason": "Последний результат по теме «Основы машинного обучения» — 60 %. Следующий шаг выбран по ошибкам в отдельных понятиях."
+  },
+  {
+    "student": "adaptive_demo_b",
+    "created": true,
+    "url": "http://localhost:8501/?student=adaptive_demo_b&discipline=machine_learning",
+    "mode": "practice",
+    "focus": [
+      "Признаки объекта",
+      "Переобучение"
+    ],
+    "reason": "Последний результат по теме «Основы машинного обучения» — 60 %. Следующий шаг выбран по ошибкам в отдельных понятиях."
+  },
+  {
+    "student": "adaptive_demo_prerequisite",
+    "created": true,
+    "url": "http://localhost:8501/?student=adaptive_demo_prerequisite&discipline=machine_learning",
+    "mode": "prerequisite",
+    "focus": [],
+    "reason": "В теме «Случайный лес» последний результат 40 %. Сначала закрепите связанную базовую тему «Основы машинного обучения»; затем вернитесь к затруднению."
+  }
+]

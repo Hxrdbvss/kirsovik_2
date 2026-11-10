@@ -1,0 +1,68 @@
+{
+  "train_period": "2013",
+  "test_period": "2014",
+  "threshold": 0.35,
+  "threshold_note": "Выбран на предыдущей валидации, содержащей записи разных лет; не является независимым временным подбором.",
+  "features": [
+    "code_module",
+    "date_registration",
+    "num_of_prev_attempts",
+    "studied_credits",
+    "vle_clicks",
+    "vle_records",
+    "submitted_count"
+  ],
+  "results": {
+    "all_2014_new_students": {
+      "records": 14163,
+      "students": 13065,
+      "risk_share": 0.4180611452375909,
+      "accuracy": 0.587163736496505,
+      "precision_risk": 0.5038238941711451,
+      "recall_risk": 0.823340651916906,
+      "f1_risk": 0.6251202154260435,
+      "roc_auc": 0.6927986260576191,
+      "average_precision": 0.6249715611154667,
+      "confusion_matrix": {
+        "true_negative": 3441,
+        "false_positive": 4801,
+        "false_negative": 1046,
+        "true_positive": 4875
+      }
+    },
+    "known_modules": {
+      "records": 11526,
+      "students": 11379,
+      "risk_share": 0.398663890334895,
+      "accuracy": 0.5694082942911678,
+      "precision_risk": 0.47719950433705083,
+      "recall_risk": 0.8380848748639826,
+      "f1_risk": 0.6081326490327674,
+      "roc_auc": 0.69652165940377,
+      "average_precision": 0.6187046618848493,
+      "confusion_matrix": {
+        "true_negative": 2712,
+        "false_positive": 4219,
+        "false_negative": 744,
+        "true_positive": 3851
+      }
+    },
+    "new_modules": {
+      "records": 2637,
+      "students": 2577,
+      "risk_share": 0.502844141069397,
+      "accuracy": 0.664770572620402,
+      "precision_risk": 0.6376089663760897,
+      "recall_risk": 0.7722473604826546,
+      "f1_risk": 0.6984993178717599,
+      "roc_auc": 0.7311117899016674,
+      "average_precision": 0.7207135106870972,
+      "confusion_matrix": {
+        "true_negative": 729,
+        "false_positive": 582,
+        "false_negative": 302,
+        "true_positive": 1024
+      }
+    }
+  }
+}

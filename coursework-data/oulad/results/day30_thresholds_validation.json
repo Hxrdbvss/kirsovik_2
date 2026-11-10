@@ -1,0 +1,72 @@
+[
+  {
+    "threshold": 0.3,
+    "precision": 0.4979253112033195,
+    "recall": 0.8879492600422833,
+    "f1": 0.6380554500569693,
+    "false_positive": 1694,
+    "false_negative": 212,
+    "true_positive": 1680,
+    "true_negative": 767
+  },
+  {
+    "threshold": 0.35,
+    "precision": 0.527569775357386,
+    "recall": 0.8192389006342494,
+    "f1": 0.6418219461697723,
+    "false_positive": 1388,
+    "false_negative": 342,
+    "true_positive": 1550,
+    "true_negative": 1073
+  },
+  {
+    "threshold": 0.4,
+    "precision": 0.5634266886326195,
+    "recall": 0.7230443974630021,
+    "f1": 0.6333333333333333,
+    "false_positive": 1060,
+    "false_negative": 524,
+    "true_positive": 1368,
+    "true_negative": 1401
+  },
+  {
+    "threshold": 0.45,
+    "precision": 0.6109589041095891,
+    "recall": 0.5893234672304439,
+    "f1": 0.5999461931665322,
+    "false_positive": 710,
+    "false_negative": 777,
+    "true_positive": 1115,
+    "true_negative": 1751
+  },
+  {
+    "threshold": 0.5,
+    "precision": 0.6638477801268499,
+    "recall": 0.4978858350951374,
+    "f1": 0.5690123829658713,
+    "false_positive": 477,
+    "false_negative": 950,
+    "true_positive": 942,
+    "true_negative": 1984
+  },
+  {
+    "threshold": 0.55,
+    "precision": 0.696526508226691,
+    "recall": 0.40274841437632136,
+    "f1": 0.5103817816476892,
+    "false_positive": 332,
+    "false_negative": 1130,
+    "true_positive": 762,
+    "true_negative": 2129
+  },
+  {
+    "threshold": 0.6,
+    "precision": 0.7661188369152971,
+    "recall": 0.3202959830866808,
+    "f1": 0.4517331345508759,
+    "false_positive": 185,
+    "false_negative": 1286,
+    "true_positive": 606,
+    "true_negative": 2276
+  }
+]

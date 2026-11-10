@@ -1,0 +1,82 @@
+{
+  "checks": [
+    {
+      "name": "Ответ по методичке",
+      "passed": true
+    },
+    {
+      "name": "Номера страниц источников",
+      "passed": true
+    },
+    {
+      "name": "Вопрос без данных",
+      "passed": true
+    },
+    {
+      "name": "Пустой вопрос отклонён",
+      "passed": true
+    },
+    {
+      "name": "Отсутствующее поле question отклонено",
+      "passed": true
+    }
+  ],
+  "passed": 5,
+  "total": 5,
+  "chromadb_response": {
+    "question": "Для чего используется векторная база данных ChromaDB?",
+    "answer": "Чтобы хранить и быстро находить векторные представления данных, таких как эмбеддинги слов или документов.",
+    "sources": [
+      {
+        "id": "page_035_chunk_001",
+        "text": "04_lab050601-Работа с векторными базами данных (ChromaDB).md 1 / 7 Лабораторная работа №5-6, Часть 1: Работа с векторными базами данных (ChromaDB) Цель работы: Освоить принципы работы с векторными базами данных на примере ChromaDB. Получить практические навыки создания коллекций, генерации эмбеддингов, выполнения семантического поиска и интеграции с ML-моделями. Стек технологий: ОС: Ubuntu 24.04 LTS Окружение: Conda (mlops-lab) Библиотеки: chromadb, sentence-transformers, pandas, numpy Модели: all-MiniLM-L6-v2 (SentenceTransformer) База данных: ChromaDB (in-memory mode) Теоретическая часть 1. Векторные базы данных Векторные БД предназначены для хранения и поиска векторных представлений данных (эмбеддингов). Ключевые особенности: Хранение векторов: Оптимизированы для работы с высокоразмерными векторами Семантический поиск: Поиск по смыслу, а не точному совпадению Ближайшие соседи: Эффективный поиск похожих объектов 2. ChromaDB Open-source векторная БД с простым API: Локальный режим:",
+        "source": "lab_manual.pdf",
+        "page": 35,
+        "distance": 0.21015095710754395
+      },
+      {
+        "id": "page_041_chunk_001",
+        "text": "04_lab050601-Работа с векторными базами данных (ChromaDB).md 7 / 7 Хорошо: Дополнительно успешно выполнен Этап 5 (реализован семантический поиск, протестированы запросы). Получены осмысленные результаты поиска. Отлично: Все задания выполнены в полном объеме. Реализованы расширенные функции (Этапы 6-8): фильтрация, персистентное хранение, работа с разными типами данных. Проанализирована эффективность поиска. Рекомендуемая литература 1. ChromaDB Documentation: https://docs.trychroma.com/ 2. Sentence Transformers Documentation: https://www.sbert.net/ 3. Vector Databases Overview: https://www.pinecone.io/learn/vector-database/ 4. Semantic Search Techniques: https://www.sbert.net/examples/applications/semantic- search/README.html 5. Similarity Search Algorithms: https://en.wikipedia.org/wiki/Nearest_neighbor_search",
+        "source": "lab_manual.pdf",
+        "page": 41,
+        "distance": 0.3378167748451233
+      },
+      {
+        "id": "page_002_chunk_001",
+        "text": "00_lab000000-Содержание.md 2 / 6 Работа с векторными базами данных (ChromaDB) 6.1. Теоретическая часть 6.1.1. Векторные базы данных 6.1.2. ChromaDB 6.1.3. Применение в NLP 6.2. Практическая часть 6.2.1. Установка и настройка окружения 6.2.2. Подготовка данных и модели 6.2.3. Создание и настройка базы данных 6.2.4. Подготовка и векторизация данных 6.2.5. Семантический поиск 6.2.6. Расширенная функциональность 6.2.7. Сохранение и загрузка БД 6.2.8. Интеграция с реальными данными 6.3. Результаты и выводы Лабораторная работа 5-6.2 Работа с графовыми базами данных (Neo4j) 7.1. Теоретическая часть 7.1.1. Графовые базы данных 7.1.2. Neo4j 7.1.3. Применение в управлении знаниями 7.2. Практическая часть 7.2.1. Запуск Neo4j в Docker 7.2.2. Подключение к Neo4j Browser 7.2.3. Основы языка Cypher 7.2.4. Создание онтологии предметной области 7.2.5. Выполнение базовых запросов 7.2.6. Сложные запросы и анализ 7.2.7. Работа с реальными данными 7.2.8. Визуализация и экспорт 7.3. Результаты и выводы",
+        "source": "lab_manual.pdf",
+        "page": 2,
+        "distance": 0.33827900886535645
+      }
+    ],
+    "processing_time_seconds": 2.817
+  },
+  "no_answer_response": {
+    "question": "Сколько стоит обучение на этом курсе?",
+    "answer": "Недостаточно данных для ответа.",
+    "sources": [
+      {
+        "id": "page_133_chunk_001",
+        "text": "08_lab111204-Оценка качества работы системы.md 3 / 15 ground_truth_answer=\"Основные типы машинного обучения: обучение с учителем (supervised learning), обучение без учителя (unsupervised learning) и обучение с подкреплением (reinforcement learning).\", relevant_document_ids=[\"doc_001\"], category=\"AI\", difficulty=\"easy\" ) ] class EvaluationDataset: def __init__(self, test_cases: List[TestCase] = None): self.test_cases = test_cases or EVALUATION_DATASET def get_cases_by_category(self, category: str) -> List[TestCase]: return [case for case in self.test_cases if case.category == category] def get_cases_by_difficulty(self, difficulty: str) -> List[TestCase]: return [case for case in self.test_cases if case.difficulty == difficulty] def get_statistics(self) -> Dict[str, Any]: stats = { \"total_cases\": len(self.test_cases), \"by_category\": {}, \"by_difficulty\": {} } for case in self.test_cases: stats[\"by_category\"][case.category] = stats[\"by_category\"].get(case.category, 0) + 1",
+        "source": "lab_manual.pdf",
+        "page": 133,
+        "distance": 0.6291230916976929
+      },
+      {
+        "id": "page_146_chunk_001",
+        "text": "09_lab131800-Сквозной проект.md 1 / 9 Лабораторная работа №13-18: Сквозной проект Разработка прототипа системы управления знаниями Цель работы: Разработать полнофункциональный прототип интеллектуальной системы управления знаниями, интегрирующий технологии MLOps, векторные и графовые базы данных, семантические технологии и современные языковые модели. Объем работы: 6 недель (36 часов лабораторных работ + 36 часов самостоятельной работы) Часть 1: Примерные темы проектов Интеллектуальные системы для образования 1. Умный поиск по академическим материалам - RAG-система для научных статей и учебных материалов 2. Персональный образовательный ассистент - адаптивная система рекомендаций контента 3. Система проверки академических работ - анализ оригинальности и качества студенческих работ 4. Интеллектуальный тьютор по программированию - код-ревью и рекомендации по улучшению Бизнес-аналитика и управление 5. Анализ отзывов клиентов - классификация и извлечение инсайтов из пользовательских отзывов",
+        "source": "lab_manual.pdf",
+        "page": 146,
+        "distance": 0.6900853514671326
+      },
+      {
+        "id": "page_032_chunk_002",
+        "text": "mlflow.start_run(nested=True): mlflow.log_param(\"learning_rate\", lr) results = train_model(learning_rate=lr) mlflow.log_metrics(results) print(\"Эксперимент по подбору learning rate завершен!\") Этап 5: Анализ результатов 1. Создание скрипта для анализа: touch analyze_results.py",
+        "source": "lab_manual.pdf",
+        "page": 32,
+        "distance": 0.709108829498291
+      }
+    ],
+    "processing_time_seconds": 0.672
+  }
+}

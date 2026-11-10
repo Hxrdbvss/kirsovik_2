@@ -1,0 +1,13 @@
+{
+  "verified_at": "2026-11-10T08:11:01.600Z",
+  "checks": {
+    "same_score_different_focus": true,
+    "targeted_exercises": true,
+    "concrete_lesson_excerpts": true,
+    "prerequisite_reason_and_steps": true,
+    "knowledge_profile_and_calendar": true,
+    "mobile_390_no_overflow": true,
+    "no_streamlit_exceptions": true
+  },
+  "screenshots": 6
+}

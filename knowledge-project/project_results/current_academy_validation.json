@@ -1,0 +1,87 @@
+{
+  "verified_at": "2026-11-10T08:05:55.308170+00:00",
+  "checks": [
+    {
+      "name": "Registered synthetic profile loads",
+      "passed": true
+    },
+    {
+      "name": "Eight enrolled courses are offered",
+      "passed": true
+    },
+    {
+      "name": "Curriculum tab is available",
+      "passed": true
+    },
+    {
+      "name": "Course selection is reflected in URL",
+      "passed": true
+    },
+    {
+      "name": "Python course has two topics and five questions",
+      "passed": true
+    },
+    {
+      "name": "Group chooser contains fifteen students",
+      "passed": true
+    },
+    {
+      "name": "Открыть профиль",
+      "passed": true
+    },
+    {
+      "name": "Demo profile button changes student identity",
+      "passed": true
+    },
+    {
+      "name": "Group enrollment changes course options",
+      "passed": true
+    },
+    {
+      "name": "Administration initially shows login only",
+      "passed": true
+    },
+    {
+      "name": "Войти",
+      "passed": true
+    },
+    {
+      "name": "Incorrect credentials are rejected",
+      "passed": true
+    },
+    {
+      "name": "Войти",
+      "passed": true
+    },
+    {
+      "name": "Valid login exposes registered student list",
+      "passed": true
+    },
+    {
+      "name": "Group filter returns fifteen students",
+      "passed": true
+    },
+    {
+      "name": "Name search returns the requested student",
+      "passed": true
+    },
+    {
+      "name": "Student card lists eight disciplines",
+      "passed": true
+    },
+    {
+      "name": "Empty search has a readable state",
+      "passed": true
+    },
+    {
+      "name": "Выйти из админки",
+      "passed": true
+    },
+    {
+      "name": "Logout returns to protected login screen",
+      "passed": true
+    }
+  ],
+  "passed": 20,
+  "total": 20
+}

@@ -1,0 +1,15 @@
+{
+  "verified_at": "2026-11-09T13:59:29.700Z",
+  "checks": {
+    "python_theory_headings": true,
+    "python_code_readable": true,
+    "assignment_opens": true,
+    "solution_opens": true,
+    "reference_links_visible": true,
+    "markdown_download_contains_body_assignment_solution_sources": true,
+    "sql_mobile_no_page_overflow": true,
+    "sql_mobile_no_main_overflow": true,
+    "no_streamlit_exceptions": true
+  },
+  "screenshots": 4
+}

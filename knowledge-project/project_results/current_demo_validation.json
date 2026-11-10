@@ -1,0 +1,137 @@
+{
+  "verified_at": "2026-11-10T08:05:55.716424+00:00",
+  "student": "ui_check_e08c37b0e3",
+  "checks": [
+    {
+      "name": "UI loads without exceptions",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Student identifier is saved in URL",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Course map is present",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "UI action: Отметить материал изученным",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "UI action: Проверить ответы",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Empty quiz is rejected in UI",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "UI action: Проверить ответы",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "UI adaptive branch: repeat",
+      "passed": true,
+      "details": {
+        "score": 0
+      }
+    },
+    {
+      "name": "UI action: Проверить ответы",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "UI adaptive branch: practice",
+      "passed": true,
+      "details": {
+        "score": 60
+      }
+    },
+    {
+      "name": "UI action: Проверить ответы",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "UI adaptive branch: advance",
+      "passed": true,
+      "details": {
+        "score": 100
+      }
+    },
+    {
+      "name": "UI action: Проверить ответы",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Live UI retake does not duplicate rewards",
+      "passed": true,
+      "details": {
+        "points": 30
+      }
+    },
+    {
+      "name": "All attempts persisted",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "UI action: Перейти к следующей теме",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Next-topic button changes selected material",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "UI action: Рассчитать оценку риска",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Risk result is retained in session state",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Changing lesson preserves the last risk result",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Live OULAD inference through unified API",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Risk score is in valid range",
+      "passed": true,
+      "details": {
+        "risk_score": 0.5876,
+        "threshold": 0.35,
+        "risk_flag": true,
+        "recommendation": "Предложить дополнительные материалы и повторение темы.",
+        "note": "Экспериментальная оценка по модели OULAD; прогноз не является оценкой способностей студента."
+      }
+    },
+    {
+      "name": "Unknown OULAD module is rejected",
+      "passed": true,
+      "details": null
+    }
+  ],
+  "passed": 23,
+  "total": 23
+}

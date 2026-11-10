@@ -1,0 +1,43 @@
+{
+  "split": "grouped_validation_from_training",
+  "features": [
+    "code_module",
+    "date_registration",
+    "num_of_prev_attempts",
+    "studied_credits",
+    "vle_clicks",
+    "vle_records",
+    "submitted_count"
+  ],
+  "risk_definition": "Fail или Withdrawn после 30-го дня",
+  "results": {
+    "baseline_majority": {
+      "accuracy": 0.5653572249023662,
+      "precision_risk": 0.0,
+      "recall_risk": 0.0,
+      "f1_risk": 0.0,
+      "roc_auc": 0.5,
+      "average_precision": 0.4346427750976338,
+      "confusion_matrix": {
+        "true_negative": 2461,
+        "false_positive": 0,
+        "false_negative": 1892,
+        "true_positive": 0
+      }
+    },
+    "logistic_regression": {
+      "accuracy": 0.6721801056742477,
+      "precision_risk": 0.6638477801268499,
+      "recall_risk": 0.4978858350951374,
+      "f1_risk": 0.5690123829658713,
+      "roc_auc": 0.7158707550257593,
+      "average_precision": 0.6769803868599961,
+      "confusion_matrix": {
+        "true_negative": 1984,
+        "false_positive": 477,
+        "false_negative": 950,
+        "true_positive": 942
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "verified_at": "2026-11-10T08:13:11.406025+00:00",
+  "profiles": [
+    "adaptive_ui_8af3e208_a",
+    "adaptive_ui_8af3e208_b",
+    "adaptive_ui_8af3e208_dependency",
+    "adaptive_ui_8af3e208_review"
+  ],
+  "checks": [
+    {
+      "name": "Demonstration profiles have the same score",
+      "passed": true
+    },
+    {
+      "name": "Adaptive page loads without exceptions",
+      "passed": true
+    },
+    {
+      "name": "Adaptive page loads without exceptions",
+      "passed": true
+    },
+    {
+      "name": "A shows the learner-specific concept",
+      "passed": true
+    },
+    {
+      "name": "B shows different gaps at the same grade",
+      "passed": true
+    },
+    {
+      "name": "Reason and route are available",
+      "passed": true
+    },
+    {
+      "name": "Targeted remediation is visible",
+      "passed": true
+    },
+    {
+      "name": "A links a concrete lesson fragment",
+      "passed": true
+    },
+    {
+      "name": "Knowledge profile contains all twenty course concepts",
+      "passed": true
+    },
+    {
+      "name": "Practice does not grant a successful-test reward",
+      "passed": true
+    },
+    {
+      "name": "Adaptive page loads without exceptions",
+      "passed": true
+    },
+    {
+      "name": "An advanced-topic failure opens the foundation",
+      "passed": true
+    },
+    {
+      "name": "Recommended-step button returns to the prerequisite",
+      "passed": true
+    },
+    {
+      "name": "Adaptive page loads without exceptions",
+      "passed": true
+    },
+    {
+      "name": "Failed retake keeps historical mastery and requests review",
+      "passed": true
+    },
+    {
+      "name": "Successful history creates a review calendar",
+      "passed": true
+    },
+    {
+      "name": "Review maintains the original reward",
+      "passed": true
+    }
+  ],
+  "passed": 17,
+  "total": 17
+}
