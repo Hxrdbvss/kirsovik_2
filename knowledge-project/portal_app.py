@@ -7,11 +7,28 @@ from urllib.parse import quote
 import requests
 import streamlit as st
 
-from portal_ui import LESSON_INFO, achievement_card, apply_style, course_card, hero, html, lesson_meta, progress_csv, score_panel, lesson_markdown
+from portal_ui import ACHIEVEMENTS, LESSON_INFO, achievement_card, apply_style, course_timeline, progress_ledger, html, lesson_meta, progress_csv, reward_note, score_panel, lesson_markdown
 from academy_portal import administration, choose_profile, curriculum
 from adaptive_ui import route_overview, topic_diagnostics, knowledge_profile
 
 API = os.environ.get('LEARNING_API_URL', 'http://127.0.0.1:8006')
+
+
+SECTIONS = {
+    'today': 'Сегодня',
+    'lesson': 'Урок',
+    'route': 'Маршрут',
+    'rewards': 'Награды',
+    'progress': 'Мой прогресс',
+    'plan': 'Учебный план',
+    'analytics': 'Аналитика OULAD',
+}
+
+
+def navigate(section, material_id=None):
+    st.query_params['section'] = section
+    if material_id is not None:
+        select_material(material_id)
 
 
 def api(method, endpoint, payload=None, admin=False):
@@ -40,9 +57,15 @@ def select_material(material_id):
     st.session_state['selected_material'] = material_id
 
 
-def sidebar(academy, admin_view=False):
+def sidebar(academy, admin_view, section):
     with st.sidebar:
-        html('<div class="brand"><span class="brand-mark">т</span>Траектория</div><div class="eyebrow">УЧЕБНЫЙ КАБИНЕТ</div>')
+        html('<div class="brand"><span class="brand-mark">т</span>Траектория</div>')
+        if not admin_view:
+            with st.container(key='workspace_menu'):
+                for key, label in SECTIONS.items():
+                    st.button(label, key=f'nav_{key}', on_click=navigate, args=(key,),
+                              type='primary' if key == section else 'secondary', width='stretch')
+            st.divider()
         if st.button('Учебный кабинет' if admin_view else 'Администрирование', width='stretch'):
             st.query_params['view'] = 'learn' if admin_view else 'admin'
             st.rerun()
@@ -65,11 +88,6 @@ def sidebar(academy, admin_view=False):
                 st.button('Открыть профиль',on_click=choose_profile,width='stretch')
             st.caption('Все имена и результаты в наборе вымышлены.')
         html('<div class="sidebar-note">Один идентификатор — одна история обучения. Выберите демостудента или создайте свободный профиль.</div>')
-        st.caption('Материал → тест → рекомендация')
-        st.markdown('**Ваши награды**')
-        st.caption('10 баллов за прочитанный материал\n\n20 баллов за первый успешный тест\n\nНовый уровень каждые 100 баллов')
-        st.divider()
-        st.caption('Демонстрационный учебный кабинет без пароля студента. Админка защищена отдельным входом.')
     return student_id
 
 
@@ -101,6 +119,7 @@ def study_view(path, student_id, catalog):
                 for source in material['sources']:
                     st.markdown(f'- [{source["title"]}]({source["url"]})')
             st.download_button('Скачать конспект .md', data=lesson_markdown(material), file_name=f'lesson_{selected}.md', mime='text/markdown',key=f'lesson_download_{selected}')
+        reward_note(10, material['read'], 'За первую отметку о чтении этой темы')
         if material['read']:
             st.caption('✓ Материал отмечен изученным · 10 баллов уже учтены')
         elif st.button('Отметить материал изученным', key=f'read_{student_id}_{selected}'):
@@ -122,8 +141,8 @@ def study_view(path, student_id, catalog):
             st.write(material['practice'])
             st.caption('Для самостоятельной работы. Проверьте понимание повторным тестом — он подтвердит освоение темы.')
     with st.container(key='quiz_panel'):
-        html('<div class="section-kicker">ШАГ 02 · САМОПРОВЕРКА</div>')
         st.subheader('Проверьте понимание')
+        reward_note(20, material['mastered'], 'За первый результат от 80 % по этой теме')
         html('<p class="section-description">От 80 % — освоение темы. Персональный шаг учитывает ошибки, динамику попыток, базовые темы и срок повторения.</p>')
         if quiz:
             with st.form(f'quiz_{student_id}_{selected}', clear_on_submit=False):
@@ -152,15 +171,46 @@ def study_view(path, student_id, catalog):
 
 
 def course_view(path):
-    html('<div class="section-kicker">ПРОГРАММА ОБУЧЕНИЯ</div>')
-    st.subheader(f'{len(path["materials"])} темы. Одна траектория.')
-    st.write('Освоение определяется лучшим результатом теста. Текущий персональный шаг также учитывает ошибки, динамику, зависимости тем и срок повторения; выбирать материалы самостоятельно по-прежнему можно.')
-    for start in range(0, len(path['materials']), 2):
+    st.subheader('Этапы курса')
+    course_timeline(path['materials'], path['recommended_material_id'])
+    st.button('Перейти к уроку', on_click=navigate, args=('lesson',))
+
+
+def today_view(path, catalog):
+    recommendation = path['adaptive'].get('recommendation')
+    main_column, ledger = st.columns([7, 4], gap='large')
+    with main_column:
+        with st.container(key='today_focus'):
+            if recommendation:
+                material_id = recommendation['material_id']
+                material = catalog[material_id]
+                html(f'<div class="today-feature"><span>Рекомендация на сегодня</span>'
+                     f'<h2>{escape(material["topic"])}</h2>'
+                     f'<p>{escape(recommendation["reason"])}</p></div>')
+                st.button('Открыть урок', key='today_open_lesson', type='primary',
+                          on_click=navigate, args=('lesson', material_id), width='stretch')
+                reward_note(10, material['read'], 'За первую отметку о чтении')
+                reward_note(20, material['mastered'], 'За первый результат от 80 %')
+            else:
+                st.success('Все темы освоены. Срок планового повторения ещё не наступил.')
+                st.button('Посмотреть маршрут', on_click=navigate, args=('route',))
+    with ledger:
+        progress_ledger(path['progress'])
+        st.button('Посмотреть награды', on_click=navigate, args=('rewards',), width='stretch')
+
+
+def rewards_view(progress):
+    unlocked = set(progress['achievements'])
+    st.subheader(f'Достижения · {len(unlocked)} из {len(ACHIEVEMENTS)}')
+    st.caption('Достижения открываются отдельно в каждой дисциплине. Опыт и уровни общие для всех дисциплин.')
+    for start in range(0, len(ACHIEVEMENTS), 2):
         columns = st.columns(2)
-        for index, material in enumerate(path['materials'][start:start + 2]):
-            with columns[index]:
-                course_card(material, start + index + 1, material['id'] == path['recommended_material_id'])
-    st.caption('Откройте нужную тему через список «Выберите тему» во вкладке «Обучение».')
+        for column, (title, description, number) in zip(columns, ACHIEVEMENTS[start:start + 2]):
+            with column:
+                achievement_card(title, description, title in unlocked, number)
+    st.markdown('### Как начисляется опыт')
+    st.write('За первую отметку о чтении темы начисляется **10 XP**, за первый успешный тест по ней — **20 XP**. Каждые **100 XP** повышают уровень. Повторные тесты сохраняются в истории и уточняют рекомендации.')
+    st.caption(f'Опыт в этой дисциплине: {progress.get("course_points", progress["total_points"])} XP.')
 
 
 def progress_view(progress, catalog, student_id):
@@ -169,16 +219,6 @@ def progress_view(progress, catalog, student_id):
     st.write(f'Изучено материалов: **{progress["completed_materials"]}**. Успешно пройдено тестов: **{progress["completed_tasks"]}**.')
     st.caption(f'В выбранной дисциплине: {progress.get("course_points", progress["total_points"])} баллов. Общий опыт по всем дисциплинам: {progress["total_points"]}. Достижения ниже относятся к выбранной дисциплине.')
     st.progress(progress['points_in_level'] / 100, text=f'До уровня {progress["level"] + 1}: {progress["points_to_next_level"]} баллов')
-    st.markdown('### Достижения')
-    achievements = [('Первый изученный материал', 'Отметьте первый материал прочитанным.'),
-                    ('Первый пройденный тест', 'Наберите не менее 80 % в одном тесте.'),
-                    ('Без ошибок', 'Ответьте верно на все пять вопросов.'),
-                    ('Все темы освоены', 'Успешно пройдите тест по каждой теме.')]
-    for start in range(0, len(achievements), 2):
-        columns = st.columns(2)
-        for index, (title, description) in enumerate(achievements[start:start + 2]):
-            with columns[index]:
-                achievement_card(title, description, title in progress['achievements'])
     with st.container(key='progress_history'):
         st.markdown('### История тестирования')
         if progress['attempts']:
@@ -238,7 +278,10 @@ def main():
     if not academy:
         return
     admin_view = st.query_params.get('view') == 'admin'
-    student_id = sidebar(academy, admin_view)
+    section = st.query_params.get('section', 'today')
+    if section not in SECTIONS:
+        section = 'today'
+    student_id = sidebar(academy, admin_view, section)
     if admin_view:
         administration(api)
         return
@@ -262,10 +305,9 @@ def main():
     if st.session_state.get('selected_discipline') not in courses:
         requested = st.query_params.get('discipline','machine_learning')
         st.session_state['selected_discipline'] = requested if requested in courses else next(iter(courses))
-    html(f'<div class="profile-strip"><span><strong>{escape(profile["full_name"])}</strong> · {escape(profile["group_name"])}</span><span class="chip">{len(courses)} ДИСЦИПЛИН</span></div>')
-    left,right = st.columns([3,1])
-    discipline = left.selectbox('Дисциплина',list(courses),format_func=lambda key:courses[key]['name'],key='selected_discipline')
-    right.caption('Учебный план · семестр 3\n\nДемонстрационные данные')
+    with st.sidebar:
+        discipline = st.selectbox('Дисциплина', list(courses), format_func=lambda key:courses[key]['name'],
+                                  key='selected_discipline')
     st.query_params['discipline'] = discipline
     if st.session_state.get('course_owner') != discipline:
         st.session_state['course_owner'] = discipline
@@ -276,22 +318,25 @@ def main():
         return
     progress = path['progress']
     catalog = {material['id']: material for material in path['materials']}
-    hero(student_id, progress['mastered_topics'], progress['total_topics'], courses[discipline]['name'])
-    columns = st.columns(4)
-    for column, label, value in zip(columns, ['Освоено тем', 'Баллы опыта', 'Уровень', 'Попытки тестов'],
-        [f'{progress["mastered_topics"]} / {progress["total_topics"]}', progress['total_points'], progress['level'], len(progress['attempts'])]):
-        column.metric(label, value)
-    st.caption('Освоение и попытки — в выбранной дисциплине. Опыт и уровень — общие по всем дисциплинам.')
-    study_tab, course_tab, progress_tab, plan_tab, analytics_tab = st.tabs(['Обучение', 'Карта курса', 'Мой прогресс', 'Учебный план', 'Аналитика OULAD'])
-    with study_tab:
+    # Keep the lesson selection when its widget is hidden on another screen.
+    if 'selected_material' in st.session_state:
+        st.session_state['selected_material'] = st.session_state['selected_material']
+    html(f'<header class="workspace-heading"><p>{escape(courses[discipline]["name"])}</p>'
+         f'<h1>{escape(SECTIONS[section])}</h1>'
+         f'<span>{escape(profile["full_name"])} · {escape(profile["group_name"])}</span></header>')
+    if section == 'today':
+        today_view(path, catalog)
+    elif section == 'lesson':
         study_view(path, student_id, catalog)
-    with course_tab:
+    elif section == 'route':
         course_view(path)
-    with progress_tab:
+    elif section == 'rewards':
+        progress_ledger(progress)
+        rewards_view(progress)
+    elif section == 'progress':
         progress_view(progress, catalog, student_id)
         knowledge_profile(path['adaptive'])
-    with plan_tab:
-        curriculum(list(courses.values()),discipline)
-    with analytics_tab:
+    elif section == 'plan':
+        curriculum(list(courses.values()), discipline)
+    elif section == 'analytics':
         analytics_view(student_id, catalog)
-    html('<div class="footnote">Траектория · Учебная среда<br>Материал прочитан — это первый шаг. Тема освоена, когда лучший результат теста не ниже 80 %.</div>')
