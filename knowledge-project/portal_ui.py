@@ -23,50 +23,18 @@ def apply_style():
     html('<style>' + (ROOT / 'assets/portal.css').read_text(encoding='utf-8') + '</style>')
 
 
-ACHIEVEMENTS = (
-    ('Первый изученный материал', 'Отметьте первый материал изученным.', '01'),
-    ('Первый пройденный тест', 'Наберите не менее 80 % в одном тесте.', '02'),
-    ('Без ошибок', 'Получите 100 % в любом тесте дисциплины.', '03'),
-    ('Все темы освоены', 'Наберите от 80 % по каждой теме дисциплины.', '04'),
-)
-
-
-def progress_ledger(progress):
-    level = int(progress['level'])
-    points = int(progress['points_in_level'])
-    html(f'''<div class="course-masthead"><div class="course-title">
-        <div class="eyebrow">Прогресс в дисциплине</div>
-        <p>Освоено тем: <strong>{progress["mastered_topics"]} из {progress["total_topics"]}</strong></p>
-        </div><section class="xp-panel" aria-label="Игровой прогресс">
-        <div class="xp-top"><strong><small>Уровень</small> {level:02d}</strong><span>{progress["total_points"]} XP всего</span></div>
-        <progress value="{points}" max="100" aria-label="Опыт на текущем уровне"></progress>
-        <div class="xp-meta"><span>{points} / 100 XP</span><span>До уровня {level + 1}: {progress["points_to_next_level"]} XP</span></div>
-        </section></div>''')
-
-
-def reward_note(reward, completed, instruction):
-    state = 'Получено' if completed else 'Доступно'
-    html(f'<div class="reward-line {"earned" if completed else ""}">'
-         f'<strong>+{reward} XP</strong><span>{escape(instruction)}</span><small>{state}</small></div>')
-
-
-def course_timeline(materials, recommended):
-    rows = []
-    for index, material in enumerate(materials, 1):
-        current = material['id'] == recommended
-        mastered = material['mastered']
-        status = 'Освоено' if mastered else 'Конспект изучен' if material['read'] else 'Впереди'
-        if current:
-            status = 'Рекомендовано повторить' if mastered else 'Следующий шаг'
-        score = material['best_score']
-        score_text = 'Тест не пройден' if score is None else f'Лучший результат: {score} %'
-        rows.append(
-            f'<li class="{"current" if current else ""} {"mastered" if mastered else ""}">'
-            f'<span class="stage-number">{index:02d}</span><div class="stage-topic">'
-            f'<strong>{escape(material["topic"])}</strong><small>{score_text}</small></div>'
-            f'<span class="stage-state">{status}</span></li>'
-        )
-    html('<ol class="course-timeline" aria-label="Этапы курса">' + ''.join(rows) + '</ol>')
+def hero(student_id, mastered, total, discipline_name='Машинное обучение'):
+    percent = round(mastered / max(total, 1) * 100)
+    circle = 2 * 3.14159265 * 59
+    html(f'''<div class="hero"><div><div class="eyebrow">ВАШ ПЕРСОНАЛЬНЫЙ КУРС</div>
+        <h1>{escape(discipline_name)}.<br>Шаг за шагом.</h1>
+        <p>Изучайте понятия, проверяйте понимание и двигайтесь дальше с рекомендацией по вашему результату.</p>
+        <span class="hero-user">Профиль · {escape(student_id)}</span></div>
+        <div class="hero-orbit"><svg viewBox="0 0 145 145" aria-hidden="true">
+        <circle cx="72.5" cy="72.5" r="59" fill="none" stroke="#416052" stroke-width="6"/>
+        <circle cx="72.5" cy="72.5" r="59" fill="none" stroke="#b8ecc9" stroke-width="6" stroke-linecap="round"
+        stroke-dasharray="{circle:.2f}" stroke-dashoffset="{circle * (1 - percent / 100):.2f}"/></svg>
+        <div class="orbit-label"><strong>{percent}%</strong><small>курса освоено</small></div></div></div>''')
 
 
 def lesson_meta(material, number, question_count=5):
@@ -85,11 +53,19 @@ def score_panel(result):
          f'<div class="score-reward">{reward}</div></div></div>')
 
 
-def achievement_card(title, description, unlocked, number):
-    state = 'Открыто' if unlocked else 'Закрыто'
-    html(f'<div class="achievement {"" if unlocked else "locked"}">'
-         f'<div class="achievement-top"><span class="achievement-symbol">{"✓" if unlocked else number}</span>'
-         f'<span>{state}</span></div><strong>{escape(title)}</strong><small>{escape(description)}</small></div>')
+def course_card(material, number, recommended):
+    status = 'Повторение сейчас' if material['mastered'] and recommended else 'Освоена' if material['mastered'] else 'Рекомендуется сейчас' if recommended else 'Впереди'
+    best = f'Лучший результат: {material["best_score"]}%' if material['best_score'] is not None else 'Тест ещё не пройден'
+    info = {'summary': material.get('summary', LESSON_INFO.get(material['id'], {}).get('summary', material['topic']))}
+    html(f'<div class="lesson-card {"is-current" if recommended else ""}"><div class="lesson-number">{number:02d}</div>'
+         f'<div class="lesson-meta"><span class="chip {"done" if material["mastered"] else ""}">{status}</span></div>'
+         f'<h3>{escape(material["topic"])}</h3><p>{escape(info["summary"])}</p>'
+         f'<div class="lesson-card-footer"><span>{best}</span><span>Попыток: {material["attempt_count"]}</span></div></div>')
+
+
+def achievement_card(title, description, unlocked):
+    html(f'<div class="achievement {"" if unlocked else "locked"}"><div class="achievement-symbol">{"✓" if unlocked else "○"}</div>'
+         f'<strong>{escape(title)}</strong><small>{escape(description)}</small></div>')
 
 
 def progress_csv(progress, catalog):

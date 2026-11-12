@@ -22,6 +22,7 @@ at = AppTest.from_file(str(ROOT / 'student_portal.py')).run(timeout=30)
 at.text_input[0].set_value(student).run(timeout=30)
 record('UI loads without exceptions', not at.exception)
 record('Student identifier is saved in URL', at.query_params.get('student') == student)
+record('Course map is present', any(tab.label == 'Карта курса' for tab in at.tabs))
 
 
 def click(label):
@@ -29,10 +30,6 @@ def click(label):
     record(f'UI action: {label}', not at.exception)
 
 
-click('Маршрут')
-record('Course timeline is present', any('course-timeline' in item.value for item in at.markdown))
-click('Сегодня')
-click('Открыть урок')
 click('Отметить материал изученным')
 click('Проверить ответы')
 record('Empty quiz is rejected in UI', any('пять вопросов' in item.value for item in at.warning))
@@ -50,11 +47,8 @@ record('All attempts persisted', len(progress['attempts']) == 4)
 click('Перейти к следующей теме')
 record('Next-topic button changes selected material', at.session_state['selected_material'] == 'mat_02')
 
-click('Аналитика OULAD')
 click('Рассчитать оценку риска')
 record('Risk result is retained in session state', at.session_state['risk_result']['student'] == student)
-click('Урок')
-record('Lesson selection survives navigation', at.session_state['selected_material'] == 'mat_02')
 at.selectbox(key='selected_material').set_value('mat_01').run(timeout=30)
 record('Changing lesson preserves the last risk result', at.session_state['risk_result']['student'] == student)
 
